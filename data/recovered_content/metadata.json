@@ -1,0 +1,61 @@
+{
+  "recovery_date": "2026-03-11",
+  "total_csv_urls": 3,
+  "recovered_csv_urls": 3,
+  "success_rate": "100%",
+  "bonus_pages": [
+    "Homepage"
+  ],
+  "extra_pages_found": 14,
+  "recovered_content": [
+    {
+      "url": "https://thetravelbackpack.com/hiking-backpacks/small-hiking-backpack",
+      "title": "Best Small Hiking Backpack for Day Adventures",
+      "filename": "hiking-backpacks-small-hiking-backpack_20250808145346.html",
+      "archive_timestamp": "20250808145346",
+      "archive_date": "2025-08-08",
+      "recovered_at": "2026-03-11 16:52:18",
+      "file_size_kb": 200.4,
+      "target_keyword": "small lightweight backpack for walking",
+      "keyword_volume": "40",
+      "previous_position": "96",
+      "source": "CSV"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/coach-laptop-backpack/",
+      "title": "Coach Laptop Backpack: Your Perfect Work Companion",
+      "filename": "budget-backpacks-coach-laptop-backpack_20251006193910.html",
+      "archive_timestamp": "20251006193910",
+      "archive_date": "2025-10-06",
+      "recovered_at": "2026-03-11 16:40:50",
+      "file_size_kb": 178.3,
+      "target_keyword": "coach laptop backpack",
+      "keyword_volume": "150",
+      "previous_position": "97",
+      "source": "CSV"
+    },
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/backpack-to-avoid-lower-back-pain",
+      "title": "Best Backpack to Avoid Lower Back Pain: Top Picks 2024",
+      "filename": "travel-backpacks-backpack-to-avoid-lower-back-pain_20250513071801.html",
+      "archive_timestamp": "20250513071801",
+      "archive_date": "2025-05-13",
+      "recovered_at": "2026-03-11 16:55:40",
+      "file_size_kb": 191.7,
+      "target_keyword": "backpack good for back",
+      "keyword_volume": "20",
+      "previous_position": "95",
+      "source": "CSV"
+    },
+    {
+      "url": "https://thetravelbackpack.com/",
+      "title": "Homepage",
+      "filename": "homepage_20250808152202.html",
+      "archive_timestamp": "20250808152202",
+      "archive_date": "2025-08-08",
+      "recovered_at": "2026-03-11 16:42:56",
+      "file_size_kb": 150.8,
+      "source": "Bonus (Homepage)"
+    }
+  ]
+}
