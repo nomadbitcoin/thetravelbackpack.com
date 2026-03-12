@@ -365,8 +365,141 @@ dataLayer.push({
 
 ### 5. Content Types & Structure
 
-#### 5.1 Blog Posts
+#### 5.1 Content Architecture: JSON-First
+
+**Core Principle:** Content and design are fully separated.
+- **Content** = JSON files with structured data (AI-generated or human-authored)
+- **Design** = Astro components that consume JSON and render HTML
+- Redesigning a page never requires touching content files
+- Each content type has its own JSON schema and dedicated renderer component
+
+**Two content formats:**
+
+| Format | Used For | Astro Collection Type |
+|--------|----------|-----------------------|
+| JSON | All structured/programmatic pages | `type: 'data'` |
+| Markdown | Narrative blog posts only | `type: 'content'` |
+
+**Content creation flow:**
+```
+AI pipeline → JSON file (validated schema) → Astro build → Static HTML page
+```
+
+---
+
+#### 5.2 Resource Pages (Bulk of site)
 **Priority:** P0
+
+Resource pages are the primary page type. They are fully static HTML, SEO-optimized, and generated from structured JSON. Each content type has its own schema and renderer.
+
+**Content type groups:**
+
+**Idea Lists**
+- Business idea lists by niche, budget, skill level
+- Side hustle ideas
+- URL: `/resources/[niche]/business-ideas/`
+
+**Checklists**
+- Step-by-step process checklists
+- Requirements checklists (legal, technical, launch)
+- Interactive checkboxes rendered client-side (JS island)
+- URL: `/resources/[niche]/checklist/`
+
+**Guides**
+- How-to guides with numbered steps
+- Beginner → advanced breakdowns
+- URL: `/resources/[niche]/guide/`
+
+**Templates**
+- Document templates with copyable sections
+- URL: `/resources/[niche]/templates/`
+
+**Calendars**
+- Deadline calendars, seasonal planning
+- URL: `/resources/[niche]/calendar/`
+
+**Glossaries**
+- Term definitions with anchor links
+- Highly linkable, long-tail keyword value
+- URL: `/resources/[niche]/glossary/`
+
+**Statistics Pages**
+- Curated data and stats with citations
+- URL: `/resources/[niche]/statistics/`
+
+**Comparison Pages**
+- Side-by-side feature/service comparisons
+- Rendered as structured HTML tables
+- URL: `/resources/[niche]/compare/`
+
+**Example JSON schema (idea list):**
+```typescript
+interface ResourceArticle {
+  meta: {
+    content_type: string;
+    niche: string;
+  };
+  seo: {
+    title: string;       // templated, not AI-generated
+    description: string;
+    keywords: string[];
+  };
+  content: {
+    intro: string;
+    sections: {
+      heading: string;
+      items: {           // 15-20 per section
+        title: string;
+        description: string;
+        difficulty?: 'beginner' | 'intermediate' | 'advanced';
+        potential?: 'high' | 'medium' | 'standard';
+      }[];
+    }[];
+    pro_tips: string[];  // exactly 5
+  };
+}
+```
+
+---
+
+#### 5.3 Tool Pages
+**Priority:** P1
+
+Tool pages are static HTML wrappers with one interactive component (Astro Island). Search engines index all surrounding content; the tool itself runs client-side only.
+
+**Architecture:**
+```astro
+---
+// Static wrapper — fully rendered HTML
+import Calculator from '../components/tools/Calculator.tsx';
+---
+
+<h1>Freelance Rate Calculator</h1>        <!-- indexed by search engines -->
+<p>Use this calculator to...</p>           <!-- indexed -->
+<Calculator client:idle />                 <!-- hydrates when browser is idle -->
+<section>How to use this tool...</section> <!-- indexed -->
+```
+
+**Hydration strategy:**
+- `client:load` — tool is above the fold, needed immediately
+- `client:idle` — tool is below the fold, loads when browser is idle
+- `client:visible` — tool loads only when scrolled into view
+
+**Tool types in scope:**
+- **Calculators** — rate, budget, ROI, cost estimators
+- **Filter Tables** — filterable/sortable data tables
+- **Unit Converters** — currency, measurements, time zones
+- **Quizzes / Assessments** — decision support flows
+- **Word/Character Counters** — writing utilities
+
+**URL structure:** `/tools/[tool-name]/`
+
+---
+
+#### 5.4 Blog Posts
+**Priority:** P1
+
+Narrative content written in Markdown. Separate from resource pages.
 
 **Content Structure:**
 - Hero image
@@ -385,7 +518,7 @@ dataLayer.push({
 /blog/travel-gear-essentials/
 ```
 
-#### 5.2 Static Pages
+#### 5.5 Static Pages
 **Priority:** P1
 
 - **About:** Author bio, travel philosophy
@@ -395,7 +528,7 @@ dataLayer.push({
 - **Privacy Policy:** Legal requirement
 - **Affiliate Disclosure:** FTC compliance
 
-#### 5.3 Taxonomy & Navigation
+#### 5.6 Taxonomy & Navigation
 **Priority:** P1
 
 **Tag System:**
@@ -408,6 +541,24 @@ dataLayer.push({
 /tags/bali/
 /tags/budget-travel/
 ```
+
+---
+
+### 5.7 Expansion Path
+
+The architecture is designed for incremental complexity:
+
+| Phase | Content Types | Tools |
+|-------|--------------|-------|
+| v1 | Checklists, idea lists, basic guides | None |
+| v2 | Comparisons, glossaries, statistics, templates | Simple calculators, filter tables |
+| v3 | Calendars, quizzes, decision trees | Multi-step tools, assessments |
+
+Adding a new content type requires:
+1. Define JSON schema
+2. Add Astro `type: 'data'` collection
+3. Build one renderer component
+4. No changes to existing pages or content
 
 ---
 
@@ -526,9 +677,12 @@ jobs:
 - **Language:** TypeScript
 - **CSS:** Tailwind CSS (or vanilla CSS)
 - **Markdown:** MDX support
+- **Interactive Islands:** React (via `@astrojs/react`) — only for tool components
 
 **Content:**
-- **CMS:** Decap CMS (formerly Netlify CMS)
+- **Structured pages:** JSON files (`type: 'data'` Astro collections)
+- **Blog posts:** Markdown/MDX (`type: 'content'` Astro collections)
+- **CMS:** Decap CMS (formerly Netlify CMS) — P1, blog posts only
 - **Images:** Astro's built-in image optimization
 - **Forms:** Formspree or Netlify Forms
 
@@ -536,6 +690,7 @@ jobs:
 - `@astrojs/sitemap`
 - `@astrojs/rss`
 - `@astrojs/mdx`
+- `@astrojs/react` (for interactive tool islands)
 - `@astrojs/tailwind` (optional)
 
 **Analytics & Tracking:**
@@ -554,54 +709,85 @@ jobs:
 tbd-project/
 ├── src/
 │   ├── content/
-│   │   ├── config.ts              # Content schema with SEO validation
-│   │   └── posts/                 # Blog posts
-│   │       ├── bali-guide.md
-│   │       └── tokyo-hotels.mdx
+│   │   ├── config.ts                    # All collection schemas
+│   │   ├── posts/                       # Blog posts (markdown, type: 'content')
+│   │   │   ├── bali-guide.md
+│   │   │   └── tokyo-hotels.mdx
+│   │   └── resources/                   # Structured pages (JSON, type: 'data')
+│   │       ├── idea-lists/              # Business/side hustle idea lists
+│   │       │   └── freelance-ideas.json
+│   │       ├── checklists/              # Process & requirements checklists
+│   │       │   └── launch-checklist.json
+│   │       ├── guides/                  # How-to guides
+│   │       ├── templates/               # Document templates
+│   │       ├── calendars/               # Deadline & planning calendars
+│   │       ├── glossaries/              # Term definitions
+│   │       ├── statistics/              # Data & stats pages
+│   │       └── comparisons/             # Side-by-side comparisons
 │   ├── layouts/
-│   │   ├── BaseLayout.astro       # Global layout with GTM
-│   │   └── BlogPost.astro         # Post layout with SEO components
+│   │   ├── BaseLayout.astro             # Global layout with GTM
+│   │   ├── BlogPost.astro               # Markdown post layout
+│   │   └── ResourcePage.astro           # Shared layout for all resource types
 │   ├── components/
 │   │   ├── analytics/
-│   │   │   ├── GTM.astro          # Google Tag Manager script
-│   │   │   └── DataLayer.astro    # Event tracking helper
+│   │   │   ├── GTM.astro
+│   │   │   └── DataLayer.astro
 │   │   ├── seo/
-│   │   │   ├── SEOHead.astro      # Meta tags, OG, Twitter Cards
-│   │   │   ├── StructuredData.astro # JSON-LD schemas
-│   │   │   └── Breadcrumbs.astro  # SEO breadcrumbs
+│   │   │   ├── SEOHead.astro
+│   │   │   ├── StructuredData.astro
+│   │   │   └── Breadcrumbs.astro
+│   │   ├── renderers/                   # One renderer per content type
+│   │   │   ├── IdeaListRenderer.astro
+│   │   │   ├── ChecklistRenderer.astro
+│   │   │   ├── GuideRenderer.astro
+│   │   │   ├── TemplateRenderer.astro
+│   │   │   ├── CalendarRenderer.astro
+│   │   │   ├── GlossaryRenderer.astro
+│   │   │   ├── StatisticsRenderer.astro
+│   │   │   └── ComparisonRenderer.astro
+│   │   ├── tools/                       # Interactive islands (React)
+│   │   │   ├── Calculator.tsx
+│   │   │   ├── FilterTable.tsx
+│   │   │   └── UnitConverter.tsx
+│   │   ├── affiliate/
+│   │   │   ├── AffiliateLink.astro
+│   │   │   ├── HotelCard.astro
+│   │   │   └── ComparisonTable.astro
 │   │   ├── Header.astro
 │   │   ├── Footer.astro
-│   │   ├── AffiliateLink.astro
-│   │   ├── HotelCard.astro
-│   │   └── FAQ.astro              # Schema.org FAQ component
+│   │   └── FAQ.astro
 │   ├── pages/
-│   │   ├── index.astro            # Homepage
+│   │   ├── index.astro
 │   │   ├── blog/
-│   │   │   └── [...slug].astro    # Dynamic blog routes
+│   │   │   └── [...slug].astro          # Dynamic blog routes
+│   │   ├── resources/
+│   │   │   └── [...slug].astro          # Dynamic resource routes
+│   │   ├── tools/
+│   │   │   └── [...slug].astro          # Dynamic tool routes
 │   │   ├── about.astro
-│   │   ├── rss.xml.ts             # RSS feed
-│   │   └── sitemap.xml.ts         # Sitemap
+│   │   ├── rss.xml.ts
+│   │   └── sitemap.xml.ts
 │   ├── utils/
-│   │   ├── seo.ts                 # SEO helper functions
-│   │   └── gtm.ts                 # GTM event helpers
+│   │   ├── seo.ts
+│   │   └── gtm.ts
 │   └── styles/
 │       └── global.css
 ├── public/
-│   ├── admin/                     # Decap CMS
+│   ├── admin/                           # Decap CMS (P1)
 │   │   ├── index.html
 │   │   └── config.yml
 │   ├── images/
 │   └── favicon.svg
 ├── docs/
 │   └── internal/
-│       ├── prd.md                 # This document
-│       ├── content-rules.md       # Link attribution & disclosure rules
-│       ├── content-guidelines.md  # AI agent content creation standards
-│       └── llms.txt               # LLM-optimized site index (auto-generated)
+│       ├── prd.md
+│       ├── content-rules.md
+│       ├── content-guidelines.md
+│       └── llms.txt
 ├── .github/
 │   └── workflows/
-│       └── deploy.yml             # GitHub Actions
-├── astro.config.mjs               # Astro config
+│       └── deploy.yml
+├── astro.config.mjs
 ├── tsconfig.json
 └── package.json
 ```
@@ -1106,3 +1292,4 @@ export default defineConfig({
 
 ---
 | 1.2 | 2026-03-07 | SEO Specialist | Added SEO & Content Standards Enforcement section, GTM architecture, structured data, content schema validation, updated project structure |
+| 1.3 | 2026-03-13 | BMad Master | Defined JSON-first content architecture, Astro Islands for interactive tools, full resource content type taxonomy, renderer component pattern, expansion path v1→v3 |
