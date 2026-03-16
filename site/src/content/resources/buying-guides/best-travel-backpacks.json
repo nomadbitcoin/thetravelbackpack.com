@@ -1,0 +1,84 @@
+{
+  "meta": {
+    "content_type": "buying-guide",
+    "category": "travel-gear"
+  },
+  "seo": {
+    "title": "Best Travel Backpacks 2026: Complete Buyer's Guide",
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Find the perfect travel backpack with our comprehensive guide featuring top-rated options.",
+    "keywords": ["travel backpack", "best backpack", "carry-on backpack", "travel gear"]
+  },
+  "content": {
+    "intro": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.",
+    "items": [
+      {
+        "name": "Lorem Ipsum Travel Pro 40L",
+        "affiliate_url": "https://example.com/product-1",
+        "affiliate_platform": "amazon",
+        "image": "/images/placeholder-backpack-1.jpg",
+        "pros": [
+          "Lorem ipsum dolor sit amet, consectetur adipiscing",
+          "Sed do eiusmod tempor incididunt ut labore",
+          "Ut enim ad minim veniam, quis nostrud",
+          "Duis aute irure dolor in reprehenderit"
+        ],
+        "cons": [
+          "Excepteur sint occaecat cupidatat non proident",
+          "Sunt in culpa qui officia deserunt mollit"
+        ],
+        "best_for": "Digital nomads and frequent travelers who need lorem ipsum dolor sit amet",
+        "verdict": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Highly recommended for those who value quality and durability."
+      },
+      {
+        "name": "Dolor Sit Backpack Elite 35L",
+        "affiliate_url": "https://example.com/product-2",
+        "affiliate_platform": "rei",
+        "image": "/images/placeholder-backpack-2.jpg",
+        "pros": [
+          "Neque porro quisquam est, qui dolorem ipsum",
+          "Quis autem vel eum iure reprehenderit",
+          "At vero eos et accusamus et iusto",
+          "Temporibus autem quibusdam et aut"
+        ],
+        "cons": [
+          "Sed ut perspiciatis unde omnis iste natus",
+          "Nemo enim ipsam voluptatem quia voluptas"
+        ],
+        "best_for": "Weekend warriors and adventure seekers looking for consectetur adipiscing elit",
+        "verdict": "Sed ut perspiciatis unde omnis iste natus error sit voluptatem. Perfect for short trips and outdoor adventures with excellent build quality."
+      },
+      {
+        "name": "Consectetur Adipiscing Voyager 45L",
+        "affiliate_url": "https://example.com/product-3",
+        "affiliate_platform": "backcountry",
+        "image": "/images/placeholder-backpack-3.jpg",
+        "pros": [
+          "Temporibus autem quibusdam et aut officiis",
+          "Nam libero tempore, cum soluta nobis",
+          "Omnis voluptas assumenda est, omnis dolor",
+          "Itaque earum rerum hic tenetur"
+        ],
+        "cons": [
+          "Et harum quidem rerum facilis est",
+          "Temporibus autem quibusdam et aut"
+        ],
+        "best_for": "Long-term travelers and backpackers who need maximum space and organization",
+        "verdict": "Nemo enim ipsam voluptatem quia voluptas sit aspernatur. Excellent choice for extended trips with superior organizational features and comfort."
+      }
+    ],
+    "faq": [
+      {
+        "question": "Lorem ipsum dolor sit amet, consectetur adipiscing elit?",
+        "answer": "Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat."
+      },
+      {
+        "question": "Duis aute irure dolor in reprehenderit in voluptate?",
+        "answer": "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem."
+      },
+      {
+        "question": "Neque porro quisquam est, qui dolorem ipsum?",
+        "answer": "Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur."
+      }
+    ]
+  }
+}
