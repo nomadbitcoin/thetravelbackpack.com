@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import StructuredData from '../components/StructuredData.astro';
 
 const posts = await getCollection('posts', ({ data }) => !data.draft);
 const latestPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf()).slice(0, 3);
@@ -10,6 +11,8 @@ const latestPosts = posts.sort((a, b) => b.data.date.valueOf() - a.data.date.val
   title="The Travel Backpack - Your Ultimate Travel Gear Guide"
   description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Discover expert travel guides, gear reviews, and destination tips for your next adventure."
 >
+  <StructuredData type="organization" slot="head" />
+  <StructuredData type="website" slot="head" />
   <!-- Hero Section -->
   <section class="bg-gradient-to-r from-primary-600 to-primary-700 text-white py-20">
     <div class="container-custom">

@@ -1,6 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import StructuredData from '../../components/StructuredData.astro';
+import BreadcrumbSchema from '../../components/BreadcrumbSchema.astro';
 
 export async function getStaticPaths() {
   const posts = await getCollection('posts');
@@ -18,6 +20,7 @@ export async function getStaticPaths() {
 
 const { post } = Astro.props;
 const { Content } = await post.render();
+const currentUrl = `https://thetravelbackpack.com/travel-backpacks/${post.slug}/`;
 ---
 
 <BaseLayout
@@ -29,6 +32,28 @@ const { Content } = await post.render();
   tags={post.data.tags}
   image={post.data.featured_image}
 >
+  <StructuredData
+    type="article"
+    data={{
+      title: post.data.title,
+      description: post.data.description,
+      date: post.data.date,
+      updated: post.data.updated,
+      author: post.data.author,
+      tags: post.data.tags,
+      featured_image: post.data.featured_image,
+      url: currentUrl
+    }}
+    slot="head"
+  />
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'Travel Backpacks', url: '/travel-backpacks/' },
+      { name: post.data.title, url: currentUrl }
+    ]}
+    slot="head"
+  />
   <article class="py-12">
     <div class="container-custom max-w-4xl">
       <!-- Article Header -->

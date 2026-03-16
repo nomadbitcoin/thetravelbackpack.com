@@ -1,0 +1,85 @@
+---
+interface Props {
+  type: 'article' | 'website' | 'organization';
+  data?: any;
+}
+
+const { type, data } = Astro.props;
+const siteUrl = 'https://thetravelbackpack.com';
+
+let schema: any;
+
+if (type === 'organization') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "The Travel Backpack",
+    "url": siteUrl,
+    "logo": {
+      "@type": "ImageObject",
+      "url": `${siteUrl}/images/logo.png`
+    },
+    "description": "Expert travel backpack reviews, guides, and recommendations for adventurers worldwide.",
+    "sameAs": []
+  };
+}
+
+if (type === 'website') {
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "The Travel Backpack",
+    "url": siteUrl,
+    "description": "Expert travel backpack reviews, guides, and recommendations for adventurers worldwide.",
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Travel Backpack",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/logo.png`
+      }
+    }
+  };
+}
+
+if (type === 'article' && data) {
+  const { title, description, date, updated, author, tags, featured_image, url } = data;
+
+  schema = {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": title,
+    "description": description,
+    "author": {
+      "@type": "Organization",
+      "name": author || "The Travel Backpack"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "The Travel Backpack",
+      "logo": {
+        "@type": "ImageObject",
+        "url": `${siteUrl}/images/logo.png`
+      }
+    },
+    "datePublished": date.toISOString(),
+    "dateModified": updated ? updated.toISOString() : date.toISOString(),
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": url
+    },
+    "keywords": tags?.join(', ') || '',
+  };
+
+  if (featured_image?.src) {
+    schema.image = {
+      "@type": "ImageObject",
+      "url": featured_image.src.startsWith('http') ? featured_image.src : `${siteUrl}${featured_image.src}`,
+      "width": featured_image.width || 1200,
+      "height": featured_image.height || 630
+    };
+  }
+}
+---
+
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />
