@@ -1,0 +1,39 @@
+# Dependencies
+**/node_modules/
+
+# Build output
+**/dist/
+**/.astro/
+**/out/
+**/.next/
+
+# Environment variables
+.env
+.env.*
+!.env.example
+
+# Package manager
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+
+# Logs
+*.log
+npm-debug.log*
+
+# Testing
+/test-results/
+/playwright-report/
+/playwright/.cache/
