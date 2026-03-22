@@ -1,0 +1,88 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BreadcrumbSchema from '../../../components/BreadcrumbSchema.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+  // Build a map of year/month → posts
+  const archiveMap = new Map<string, typeof posts>();
+
+  for (const post of posts) {
+    const date = post.data.date;
+    const year = String(date.getFullYear());
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const key = `${year}/${month}`;
+    if (!archiveMap.has(key)) archiveMap.set(key, []);
+    archiveMap.get(key)!.push(post);
+  }
+
+  return Array.from(archiveMap.entries()).map(([key, archivePosts]) => {
+    const [year, month] = key.split('/');
+    const sorted = archivePosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return { params: { year, month }, props: { archivePosts: sorted } };
+  });
+}
+
+const { year, month } = Astro.params;
+const { archivePosts } = Astro.props;
+
+const monthName = new Date(`${year}-${month}-01`).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+});
+const currentUrl = `https://thetravelbackpack.com/${year}/${month}/`;
+---
+
+<BaseLayout
+  title={`Archive: ${monthName} | The Travel Backpack`}
+  description={`Browse all posts from ${monthName} on The Travel Backpack.`}
+  canonical={currentUrl}
+>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: 'Archive', url: '/' },
+      { name: monthName, url: currentUrl },
+    ]}
+    slot="head"
+  />
+
+  <div class="py-12">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">Archive: {monthName}</h1>
+      <p class="text-gray-500 mb-8">{archivePosts.length} post{archivePosts.length !== 1 ? 's' : ''}</p>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {archivePosts.map((post) => (
+          <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div class="bg-gray-200 h-48 flex items-center justify-center">
+              <span class="text-gray-400">Image</span>
+            </div>
+            <div class="p-6">
+              <div class="text-sm text-gray-500 mb-2">
+                {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </div>
+              <h2 class="text-xl font-bold mb-3">
+                <a href={`/blog/${post.slug}`} class="hover:text-primary-600">
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="text-gray-600 mb-4">{post.data.description}</p>
+              <a href={`/blog/${post.slug}`} class="text-primary-600 font-semibold hover:text-primary-700">
+                Read More →
+              </a>
+            </div>
+          </article>
+        ))}
+      </div>
+
+      <div class="mt-12">
+        <a href="/blog/" class="text-primary-600 font-semibold hover:text-primary-700">
+          ← Back to All Posts
+        </a>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

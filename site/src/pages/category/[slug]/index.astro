@@ -1,0 +1,106 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import BreadcrumbSchema from '../../../components/BreadcrumbSchema.astro';
+
+const CATEGORIES: Record<string, { label: string; description: string }> = {
+  'travel-backpacks': {
+    label: 'Travel Backpacks',
+    description: 'Reviews and guides for the best travel backpacks for every trip.',
+  },
+  'hiking-backpacks': {
+    label: 'Hiking Backpacks',
+    description: 'Expert reviews and comparisons of hiking backpacks for all terrains.',
+  },
+  'budget-backpacks': {
+    label: 'Budget Backpacks',
+    description: 'Affordable backpack options that don\'t compromise on quality.',
+  },
+  'uncategorized': {
+    label: 'All Posts',
+    description: 'Browse all travel gear articles and guides.',
+  },
+};
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+
+  return Object.keys({
+    'travel-backpacks': true,
+    'hiking-backpacks': true,
+    'budget-backpacks': true,
+    'uncategorized': true,
+  }).map((slug) => {
+    let categoryPosts;
+    if (slug === 'uncategorized') {
+      categoryPosts = posts.filter(
+        (p) =>
+          !p.data.originalUrl ||
+          (!p.data.originalUrl.includes('/travel-backpacks/') &&
+            !p.data.originalUrl.includes('/hiking-backpacks/') &&
+            !p.data.originalUrl.includes('/budget-backpacks/'))
+      );
+    } else {
+      categoryPosts = posts.filter(
+        (p) => p.data.originalUrl && p.data.originalUrl.includes(`/${slug}/`)
+      );
+    }
+    const sorted = categoryPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+    return { params: { slug }, props: { categoryPosts: sorted } };
+  });
+}
+
+const { slug } = Astro.params;
+const { categoryPosts } = Astro.props;
+const category = CATEGORIES[slug] ?? { label: slug, description: '' };
+const currentUrl = `https://thetravelbackpack.com/category/${slug}/`;
+---
+
+<BaseLayout
+  title={`${category.label} | The Travel Backpack`}
+  description={category.description}
+  canonical={currentUrl}
+>
+  <BreadcrumbSchema
+    items={[
+      { name: 'Home', url: '/' },
+      { name: category.label, url: currentUrl },
+    ]}
+    slot="head"
+  />
+
+  <div class="py-12">
+    <div class="container-custom">
+      <h1 class="text-4xl md:text-5xl font-bold mb-4">{category.label}</h1>
+      <p class="text-xl text-gray-600 mb-12">{category.description}</p>
+
+      {categoryPosts.length === 0 ? (
+        <p class="text-gray-500">No posts found in this category yet.</p>
+      ) : (
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {categoryPosts.map((post) => (
+            <article class="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+              <div class="bg-gray-200 h-48 flex items-center justify-center">
+                <span class="text-gray-400">Image</span>
+              </div>
+              <div class="p-6">
+                <div class="text-sm text-gray-500 mb-2">
+                  {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                </div>
+                <h2 class="text-xl font-bold mb-3">
+                  <a href={`/blog/${post.slug}`} class="hover:text-primary-600">
+                    {post.data.title}
+                  </a>
+                </h2>
+                <p class="text-gray-600 mb-4">{post.data.description}</p>
+                <a href={`/blog/${post.slug}`} class="text-primary-600 font-semibold hover:text-primary-700">
+                  Read More →
+                </a>
+              </div>
+            </article>
+          ))}
+        </div>
+      )}
+    </div>
+  </div>
+</BaseLayout>
