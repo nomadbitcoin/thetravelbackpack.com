@@ -1,0 +1,337 @@
+{
+  "homepage": [
+    {
+      "url": "http://thetravelbackpack.com/",
+      "lastCrawled": "2026-03-17",
+      "pathname": "/"
+    },
+    {
+      "url": "https://www.thetravelbackpack.com/",
+      "lastCrawled": "2025-11-04",
+      "pathname": "/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/",
+      "lastCrawled": "2026-03-17",
+      "pathname": "/travel-backpacks/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/hiking-backpacks/",
+      "lastCrawled": "2026-03-17",
+      "pathname": "/hiking-backpacks/"
+    }
+  ],
+  "aboutUs": [
+    {
+      "url": "https://thetravelbackpack.com/about-us/",
+      "lastCrawled": "2025-11-08",
+      "pathname": "/about-us/"
+    }
+  ],
+  "contact": [
+    {
+      "url": "https://thetravelbackpack.com/contact-us/",
+      "lastCrawled": "2025-10-09",
+      "pathname": "/contact-us/"
+    }
+  ],
+  "staticPages": [
+    {
+      "url": "https://thetravelbackpack.com/home/",
+      "lastCrawled": "2025-09-27",
+      "pathname": "/home/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/resources",
+      "lastCrawled": "2026-03-17",
+      "pathname": "/resources"
+    },
+    {
+      "url": "https://thetravelbackpack.com/privacy",
+      "lastCrawled": "2026-03-17",
+      "pathname": "/privacy"
+    }
+  ],
+  "categoryPages": [
+    {
+      "url": "https://thetravelbackpack.com/category/travel-backpacks/",
+      "lastCrawled": "2025-10-26",
+      "pathname": "/category/travel-backpacks/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/category/budget-backpacks/",
+      "lastCrawled": "2025-10-20",
+      "pathname": "/category/budget-backpacks/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/category/hiking-backpacks/",
+      "lastCrawled": "2025-10-07",
+      "pathname": "/category/hiking-backpacks/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/category/uncategorized/",
+      "lastCrawled": "2025-09-28",
+      "pathname": "/category/uncategorized/"
+    }
+  ],
+  "tagPages": [],
+  "paginationPages": [
+    {
+      "url": "https://thetravelbackpack.com/page/2/",
+      "lastCrawled": "2025-10-26",
+      "pathname": "/page/2/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/page/6/",
+      "lastCrawled": "2025-09-27",
+      "pathname": "/page/6/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/page/4/",
+      "lastCrawled": "2025-09-22",
+      "pathname": "/page/4/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/page/3/",
+      "lastCrawled": "2025-09-22",
+      "pathname": "/page/3/"
+    }
+  ],
+  "budgetBackpacks": [
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/pink-nova-sprayground-backpack/",
+      "lastCrawled": "2025-11-07",
+      "pathname": "/budget-backpacks/pink-nova-sprayground-backpack/",
+      "slug": "pink-nova-sprayground-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/mcm-backpack/",
+      "lastCrawled": "2025-11-07",
+      "pathname": "/budget-backpacks/mcm-backpack/",
+      "slug": "mcm-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/deuter-backpack/",
+      "lastCrawled": "2025-11-04",
+      "pathname": "/budget-backpacks/deuter-backpack/",
+      "slug": "deuter-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/ladies-laptop-backpack/",
+      "lastCrawled": "2025-11-02",
+      "pathname": "/budget-backpacks/ladies-laptop-backpack/",
+      "slug": "ladies-laptop-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/college-bags-for-girls/",
+      "lastCrawled": "2025-10-27",
+      "pathname": "/budget-backpacks/college-bags-for-girls/",
+      "slug": "college-bags-for-girls"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/under-armor-backpack/",
+      "lastCrawled": "2025-10-25",
+      "pathname": "/budget-backpacks/under-armor-backpack/",
+      "slug": "under-armor-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/female-work-backpack/",
+      "lastCrawled": "2025-10-23",
+      "pathname": "/budget-backpacks/female-work-backpack/",
+      "slug": "female-work-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/sonic-backpack/",
+      "lastCrawled": "2025-10-21",
+      "pathname": "/budget-backpacks/sonic-backpack/",
+      "slug": "sonic-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/nurse-backpack/",
+      "lastCrawled": "2025-10-19",
+      "pathname": "/budget-backpacks/nurse-backpack/",
+      "slug": "nurse-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/gucci-backpack-women/",
+      "lastCrawled": "2025-10-16",
+      "pathname": "/budget-backpacks/gucci-backpack-women/",
+      "slug": "gucci-backpack-women"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/why-no-backpacks-in-middle-school/",
+      "lastCrawled": "2025-10-16",
+      "pathname": "/budget-backpacks/why-no-backpacks-in-middle-school/",
+      "slug": "why-no-backpacks-in-middle-school"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/basketball-backpack/",
+      "lastCrawled": "2025-09-28",
+      "pathname": "/budget-backpacks/basketball-backpack/",
+      "slug": "basketball-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/coach-laptop-backpack/",
+      "lastCrawled": "2025-09-27",
+      "pathname": "/budget-backpacks/coach-laptop-backpack/",
+      "slug": "coach-laptop-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/work-backpack-women/",
+      "lastCrawled": "2025-09-26",
+      "pathname": "/budget-backpacks/work-backpack-women/",
+      "slug": "work-backpack-women"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/mens-backpack/",
+      "lastCrawled": "2025-09-26",
+      "pathname": "/budget-backpacks/mens-backpack/",
+      "slug": "mens-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/hostel-packing-list/",
+      "lastCrawled": "2025-09-21",
+      "pathname": "/budget-backpacks/hostel-packing-list/",
+      "slug": "hostel-packing-list"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/one-direction-backpack/",
+      "lastCrawled": "2025-09-19",
+      "pathname": "/budget-backpacks/one-direction-backpack/",
+      "slug": "one-direction-backpack"
+    }
+  ],
+  "travelBackpacks": [
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/bicycle-backpack/",
+      "lastCrawled": "2025-10-20",
+      "pathname": "/travel-backpacks/bicycle-backpack/",
+      "slug": "bicycle-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/camera-and-lens-backpack/",
+      "lastCrawled": "2025-09-29",
+      "pathname": "/travel-backpacks/camera-and-lens-backpack/",
+      "slug": "camera-and-lens-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/vacation-packing-list/",
+      "lastCrawled": "2025-09-20",
+      "pathname": "/travel-backpacks/vacation-packing-list/",
+      "slug": "vacation-packing-list"
+    }
+  ],
+  "hikingBackpacks": [
+    {
+      "url": "https://thetravelbackpack.com/hiking-backpacks/hiking-backpack/",
+      "lastCrawled": "2025-09-22",
+      "pathname": "/hiking-backpacks/hiking-backpack/",
+      "slug": "hiking-backpack"
+    },
+    {
+      "url": "https://thetravelbackpack.com/hiking-backpacks/fishing-backpack/",
+      "lastCrawled": "2025-09-19",
+      "pathname": "/hiking-backpacks/fishing-backpack/",
+      "slug": "fishing-backpack"
+    }
+  ],
+  "searchPages": [
+    {
+      "url": "https://thetravelbackpack.com/?s=%7Bsearch_term_string%7D",
+      "lastCrawled": "2025-10-10",
+      "pathname": "/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/search/{search_term_string}/",
+      "lastCrawled": "2025-10-01",
+      "pathname": "/search/%7Bsearch_term_string%7D/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/?s=%7Bsearch_term_string%7D",
+      "lastCrawled": "2025-10-01",
+      "pathname": "/"
+    }
+  ],
+  "feedPages": [
+    {
+      "url": "https://thetravelbackpack.com/search/{search_term_string}/feed/rss2/",
+      "lastCrawled": "2025-10-03",
+      "pathname": "/search/%7Bsearch_term_string%7D/feed/rss2/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/author/sujithchikku2000gmail-com/feed/",
+      "lastCrawled": "2025-09-28",
+      "pathname": "/author/sujithchikku2000gmail-com/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/hostel-packing-list/feed/",
+      "lastCrawled": "2025-09-26",
+      "pathname": "/budget-backpacks/hostel-packing-list/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/hiking-backpacks/hiking-backpack/feed/",
+      "lastCrawled": "2025-09-21",
+      "pathname": "/hiking-backpacks/hiking-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/gucci-backpack-women/feed/",
+      "lastCrawled": "2025-09-12",
+      "pathname": "/budget-backpacks/gucci-backpack-women/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/a-dog-dog-backpack/feed/",
+      "lastCrawled": "2025-09-10",
+      "pathname": "/budget-backpacks/a-dog-dog-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/does-tsa-xray-all-backpacks/feed/",
+      "lastCrawled": "2025-09-10",
+      "pathname": "/travel-backpacks/does-tsa-xray-all-backpacks/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/zoro-patch-for-backpack/feed/",
+      "lastCrawled": "2025-09-09",
+      "pathname": "/budget-backpacks/zoro-patch-for-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/pink-nova-sprayground-backpack/feed/",
+      "lastCrawled": "2025-09-09",
+      "pathname": "/budget-backpacks/pink-nova-sprayground-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/female-work-backpack/feed/",
+      "lastCrawled": "2025-09-09",
+      "pathname": "/budget-backpacks/female-work-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/category/travel-backpacks/feed/",
+      "lastCrawled": "2025-09-09",
+      "pathname": "/category/travel-backpacks/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/hiking-backpacks/small-hiking-backpack/feed/",
+      "lastCrawled": "2025-09-08",
+      "pathname": "/hiking-backpacks/small-hiking-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/budget-backpacks/nurse-backpack/feed/",
+      "lastCrawled": "2025-09-08",
+      "pathname": "/budget-backpacks/nurse-backpack/feed/"
+    },
+    {
+      "url": "https://thetravelbackpack.com/travel-backpacks/how-to-pack-a-carry-on-for-one-bag-travel/feed/",
+      "lastCrawled": "2025-09-07",
+      "pathname": "/travel-backpacks/how-to-pack-a-carry-on-for-one-bag-travel/feed/"
+    }
+  ],
+  "archivePages": [
+    {
+      "url": "https://thetravelbackpack.com/2024/11/",
+      "lastCrawled": "2025-10-11",
+      "pathname": "/2024/11/"
+    }
+  ],
+  "authorPages": [],
+  "resourcesPages": [],
+  "other": []
+}
